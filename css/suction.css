@@ -1,0 +1,143 @@
+/* ===== ภาพเครื่องดูดจำลอง (js/dia.js) ===== */
+:root{--sx-body:#fbfaf7;--sx-panel:#eef3f2;--sx-fluid:#e6c86a;--sx-air:#2f6fb0;--sx-liq:#c9a43a;--sx-lilac:#7b63b5}
+@media (prefers-color-scheme: dark){:root{--sx-body:#20262f;--sx-panel:#27303a;--sx-fluid:#b99a3e;--sx-air:#79b2ec;--sx-liq:#d8b45a;--sx-lilac:#b49cf0}}
+.logo.sx-logo{background:var(--sx-lilac)}
+svg.sx .lbl.xs{font-size:8px;fill:var(--muted)}
+.sx-body{fill:var(--sx-body);stroke:currentColor;stroke-width:1.6}
+.sx-panel{fill:var(--sx-panel);stroke:var(--line);stroke-width:1}
+.sx-tube{fill:none;stroke:var(--tube);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;opacity:.65}
+.sx-vtube{fill:none;stroke:var(--tube);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.sx-vtube.in{stroke-width:3.5;opacity:.45}
+.sx-liq{fill:none;stroke:var(--sx-liq);stroke-width:3;stroke-linecap:round;stroke-dasharray:3 9;opacity:0}
+svg.sx.liq .sx-liq{opacity:1;animation:sxflow 1.1s linear infinite}
+.sx-can{fill:rgba(160,200,230,.12);stroke:currentColor;stroke-width:1.4}
+.sx-lid{fill:var(--sx-panel);stroke:currentColor;stroke-width:1.3}
+.sx-fluid{fill:var(--sx-fluid);opacity:.85;transition:y .9s ease,height .9s ease}
+.sx-full{stroke:var(--warn);stroke-width:1;stroke-dasharray:3 3;opacity:.7}
+.sx-cage{fill:none;stroke:currentColor;stroke-width:1;stroke-dasharray:2 2;opacity:.7}
+.sx-ball{fill:var(--card);stroke:currentColor;stroke-width:1.4;transition:transform .8s ease}
+svg.sx.full .sx-ball{transform:translateY(-14px);fill:var(--hi-soft);stroke:var(--hi)}
+.sx-filt{fill:var(--card);stroke:currentColor;stroke-width:1.4}
+.sx-mem{stroke:var(--accent);stroke-width:2.5}
+svg.sx.wet .sx-filt{fill:var(--sx-fluid);opacity:.9}
+svg.sx.wet .sx-mem{stroke:var(--warn)}
+.sx-gface{fill:var(--card);stroke:currentColor;stroke-width:1.5}
+.sx-tick line{stroke:currentColor;stroke-width:1.2}
+.sx-needle line{stroke:var(--hi);stroke-width:2.2;stroke-linecap:round}
+.sx-needle circle{fill:currentColor}
+.sx-gv{font-size:10px;font-weight:600;fill:currentColor;font-family:ui-monospace,monospace}
+.sx-knob{fill:var(--card);stroke:currentColor;stroke-width:1.5}
+.sx-kptr{stroke:currentColor;stroke-width:2.5;stroke-linecap:round}
+.sx-led{fill:#5d6675;opacity:.35;stroke:currentColor;stroke-width:.6}
+svg.sx.ac .sx-led.g{fill:#2fbf71;opacity:1}
+svg.sx.chg .sx-led.y{fill:#f2b705;opacity:1}
+svg.sx.low .sx-led.r{fill:#e5484d;opacity:1;animation:blink .8s steps(1) infinite}
+.sx-sw{fill:var(--ink);opacity:.8}
+.sx-pumpb{fill:var(--sx-panel);stroke:currentColor;stroke-width:1.3}
+.sx-motor{fill:var(--card);stroke:currentColor;stroke-width:1.4}
+.sx-rot{transform-origin:228px 185px}
+.sx-rot line{stroke:currentColor;stroke-width:2}.sx-rot circle{fill:currentColor}
+svg.sx.run .sx-rot{animation:sxspin .5s linear infinite}
+svg.sx.run.weak .sx-rot{animation-duration:1.4s}
+.sx-head{fill:var(--card);stroke:currentColor;stroke-width:1.3}
+.sx-diaph{fill:none;stroke:var(--accent);stroke-width:2.2;transform-origin:271px 185px}
+svg.sx.run .sx-diaph{animation:sxpulse .5s ease-in-out infinite}
+.sx-tco{fill:var(--mid);opacity:.7}
+svg.sx.hot .sx-motor{fill:var(--warn-soft);stroke:var(--warn)}
+svg.sx.hot .sx-tco{fill:var(--warn);opacity:1;animation:blink .6s steps(1) infinite}
+.sx-muf{fill:var(--card);stroke:currentColor;stroke-width:1.3}
+svg.sx.muf .sx-muf{fill:#6b5a3a;opacity:.75}
+.sx-adp{fill:var(--ink);opacity:.82}
+.sx-cable{stroke:var(--ink);stroke-width:2.5;fill:none}
+.sx-jack{fill:var(--muted)}
+.sx-fuse{fill:var(--card);stroke:currentColor;stroke-width:1.2}
+.sx-brd{fill:#1f6f52;opacity:.85}
+.sx-chip{fill:#1d2430}
+.sx-bat{fill:var(--card);stroke:currentColor;stroke-width:1.4}
+.sx-bl{fill:#2fbf71;opacity:.8}.sx-bl.lowb{fill:#e5484d}
+.sx-bt{fill:currentColor}
+.sx-arh{fill:var(--sx-air)}
+.sx-air{fill:none;stroke:var(--sx-air);stroke-width:2;stroke-dasharray:6 6;opacity:0}
+svg.sx.run .sx-air{opacity:.95;animation:sxflow .9s linear infinite}
+svg.sx.run.weak .sx-air{animation-duration:2.4s;opacity:.55}
+svg.sx.run.full .sx-air.a1, svg.sx.run.wet .sx-air.a1{opacity:.15;animation:none}
+svg.sx.run.full .sx-air.a2, svg.sx.run.wet .sx-air.a2{opacity:.35;animation-duration:2.6s}
+svg.sx.run.muf .sx-air.a3{opacity:.3;animation-duration:3s}
+.sx-leakm{opacity:0;fill:none;stroke:var(--warn);stroke-width:1.6;stroke-linecap:round}
+svg.sx.leak-lid .sx-leakm.lid, svg.sx.leak-tube .sx-leakm.tube, svg.sx.leak-pump .sx-leakm.pump{opacity:1;animation:sxhiss .7s ease-in-out infinite}
+svg.sx.off{opacity:.8}
+svg.sx .part.hl .hit{stroke:var(--hi);stroke-width:3;stroke-dasharray:none;fill:var(--hi-soft);fill-opacity:.4;animation:hlp 1.2s ease-in-out infinite}
+@keyframes sxflow{to{stroke-dashoffset:-24}}
+@keyframes sxspin{to{transform:rotate(360deg)}}
+@keyframes sxpulse{50%{transform:scaleY(-1)}}
+@keyframes sxhiss{50%{opacity:.25;transform:translateY(-2px)}}
+@media (prefers-reduced-motion: reduce){svg.sx *{animation:none!important;transition:none!important}}
+
+/* โหมดเรียนรู้ / โหมดสอบ */
+.lpbox svg.sx{max-height:none}
+.lpbox.mini svg.sx{max-height:260px}
+.sx-mm{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 0}
+.sx-mm span{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:2px 10px;background:var(--card)}
+
+/* ภาพขยาย */
+.zm{width:100%;max-width:320px;height:auto;display:block;color:var(--ink)}
+.zm .zm-t{font-size:10px;fill:currentColor}
+.zm .zm-bad{fill:var(--warn)}
+.zm .zm-o{fill:none;stroke:currentColor;stroke-width:1.5}
+.zm .zm-f{fill:var(--card);stroke:currentColor;stroke-width:1.4}
+.zm .zm-wet{fill:var(--sx-fluid);opacity:.85}
+.zm .zm-dirt{fill:#6b5a3a;opacity:.75}
+.zm .zm-cr{fill:none;stroke:var(--warn);stroke-width:2;stroke-linecap:round}
+.zm .zm-ok{fill:none;stroke:var(--accent);stroke-width:2}
+.zm .zm-g{fill:#2fbf71}
+.zm.fixed .zm-bad,.zm.fixed .zm-cr,.zm.fixed .zm-wet,.zm.fixed .zm-dirt{display:none}
+.zm:not(.fixed) .zm-new{display:none}
+.zm.fixed .zm-old{display:none}
+
+/* แท็บย่อยในหน้าโมดูล */
+.subtabs{margin:6px 0 14px}
+.sfx{display:grid;gap:10px;margin:10px 0}
+.sfx .sfrow{border:1px solid var(--line);border-radius:12px;padding:10px 14px;background:var(--card)}
+.sfx .sfrow b{display:block}
+.sxset{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:start}
+.sxset .ctrl{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.sxset .ctrl button{min-width:52px}
+.sxset .read{font-family:ui-monospace,monospace;font-size:15px;padding:6px 10px;border-radius:8px;background:var(--accent-soft);display:inline-block}
+@media (max-width:760px){.sxset{grid-template-columns:1fr}}
+.sx-cap{min-height:22px;margin-top:4px;text-align:center}
+.sx-cap span{display:inline-block;font-size:13px;background:var(--mid-soft);color:var(--ink);border-radius:999px;padding:2px 12px}
+.lpbox svg.sx.dia{max-height:none}
+
+/* ===== จากวิชาตู้อบ: บทเรียน ใบสั่ง ตรวจก่อนใช้ มุมช่าง (js/tech.js) ===== */
+.kicker{font-size:12px;font-weight:600;color:var(--accent);letter-spacing:.03em}
+.clgrid{display:grid;gap:16px}
+@media (min-width:900px){ .clgrid{grid-template-columns:240px minmax(0,1fr);align-items:start} .clnav{position:sticky;top:112px} }
+.clnav{display:flex;flex-direction:column;gap:6px}
+@media (max-width:899px){ .clnav{flex-direction:row;overflow-x:auto;padding-bottom:4px} .clnav button{flex:none} }
+.clnav button{justify-content:flex-start;text-align:left;border-radius:10px}
+.clnav button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.lesson{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px;min-width:0}
+.lesson h2{margin-top:0}.lesson h3{margin:22px 0 4px}
+.lesson ul,.lesson ol{padding-left:22px}.lesson li{margin:4px 0}
+.exbox{background:var(--low-soft);border-radius:10px;padding:10px 14px;margin:10px 0;font-size:14px}
+.simtop{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:6px 0 10px}
+.simdots{display:flex;gap:6px}.simdots i{width:12px;height:12px;border-radius:50%;background:var(--line)}
+.simdots i.on{background:var(--ink)}.simdots i.ok{background:var(--accent)}.simdots i.bad{background:var(--warn)}
+.order{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--mid);border-radius:12px;padding:10px 14px;margin-bottom:12px}
+.order p{margin:4px 0 0;font-size:15px}
+ul.gl{list-style:none;padding:0}ul.gl li{padding:6px 10px;border-radius:8px;margin:4px 0;font-weight:600}
+ul.gl li.ok{background:var(--accent-soft);color:var(--accent)}ul.gl li.bad{background:var(--warn-soft);color:var(--warn)}
+.bad-t{color:var(--warn);font-weight:600}
+.tstat{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 12px;margin:0 0 10px;font-size:14px}
+.tp{border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-size:13px}
+.tp.ok{background:var(--accent-soft);color:var(--accent);border-color:transparent;font-weight:600}
+.chk{display:grid;gap:8px;margin:12px 0}
+.chkrow{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.chkrow p{margin:2px 0 0;font-size:14px}
+.chkrow .act{color:var(--mid);font-weight:600}
+.chkrow.good{border-color:var(--accent);background:var(--accent-soft)}
+.chkrow.bad{border-color:var(--warn);background:var(--warn-soft)}
+.chkrow .seg{flex:none}
+.chkrow .seg button.on{background:var(--ink);color:var(--bg)}
+@media (max-width:560px){ .chkrow{flex-direction:column;align-items:stretch} .chkrow .seg{align-self:flex-end} }
+.imsg{min-height:20px;margin-top:8px;font-size:13px;color:var(--mid)}

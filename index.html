@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Medical Suction Repair Trainer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/suction.css">
+<link rel="stylesheet" href="css/svc.css">
+</head>
+<body>
+<header>
+  <div class="bar">
+    <div class="logo sx-logo">SU</div>
+    <div class="brand">Medical Suction Repair Trainer<small>สื่อฝึกซ่อมและบำรุงรักษาเครื่องดูดทางการแพทย์ · 8 โมดูล + สอบรวม</small></div>
+  </div>
+  <nav id="nav">
+    <a href="#home" data-v="home">หน้าแรก</a>
+    <a href="#overview" data-v="overview">1 · ภาพรวม</a>
+    <a href="#parts" data-v="parts">2 · ส่วนประกอบ</a>
+    <a href="#tech" data-v="tech">3 · การใช้งานสำหรับช่าง</a>
+    <a href="#safety" data-v="safety">4 · ความปลอดภัย</a>
+    <a href="#accept" data-v="accept">5 · ตรวจรับเครื่อง</a>
+    <a href="#pmplan" data-v="pmplan">6 · PM ตามรอบ</a>
+    <a href="#repair" data-v="repair">7 · วิเคราะห์อาการและซ่อม</a>
+    <a href="#test" data-v="test">8 · ทดสอบหลังซ่อม</a>
+    <a href="#quiz" data-v="quiz">สอบรวม</a>
+    <a href="#scores" data-v="scores">ผลของฉัน</a>
+  </nav>
+</header>
+
+<main>
+<!-- HOME -->
+<section class="view" id="v-home">
+  <h1>ฝึกซ่อมและบำรุงรักษาเครื่องดูดทางการแพทย์ (Medical Suction)</h1>
+  <p class="muted">เครื่องในแอปนี้เป็น <b>เครื่องดูดไฟฟ้าแบบเคลื่อนย้ายได้จำลอง</b> ใช้ไฟบ้านผ่านอะแดปเตอร์และแบตเตอรี่ในตัว มีปั๊มไดอะแฟรม ตัวปรับแรงดัน เกจ ขวดเก็บพร้อมลูกลอยกันล้น และไส้กรองแบคทีเรีย เนื้อหาเขียนใหม่จากหลักการในคู่มือผู้ใช้และคู่มือซ่อมของเครื่องดูดหลายรุ่น เน้นงานของช่างเครื่องมือแพทย์ ไม่ได้สอนเทคนิคการดูดเสมหะกับผู้ป่วย</p>
+  <div class="note mqstrip" id="mq-strip"></div>
+  <div class="cards">
+    <a class="card" href="#overview"><div class="num">โมดูล 1</div><h3>ภาพรวมการทำงาน</h3><p>เครื่องดูดทำงานอย่างไรทั้งเครื่อง เส้นทางของเสมหะและอากาศ 4 ระบบหลัก แรงดันลบและหน่วยวัด พร้อมภาพเคลื่อนไหวและหน้า 3 มิติ</p></a>
+    <a class="card" href="#parts"><div class="num">โมดูล 2</div><h3>ส่วนประกอบและเส้นทางลม</h3><p>แตะชิ้นส่วนบนภาพตัดเพื่อดูหน้าที่ หลักการ อาการเสียที่พบบ่อย และวิธีตรวจ ทีละชิ้น</p></a>
+    <a class="card" href="#tech"><div class="num">โมดูล 3</div><h3>การใช้งานสำหรับช่าง</h3><p>ตั้งแรงดันให้ถูกวิธี ความหมายของไฟสถานะ ตรวจเครื่องก่อนใช้ และแยกให้ออกว่าใช้งานผิดหรือเครื่องเสีย</p></a>
+    <a class="card" href="#safety"><div class="num">โมดูล 4 · ด่านความปลอดภัย</div><h3>ความปลอดภัยในงานซ่อม</h3><p>สารคัดหลั่งและการติดเชื้อ PPE ขยะติดเชื้อ ไฟฟ้า แบตเตอรี่ และ ESD ต้องตอบถูกครบ 5 ข้อจึงเข้าโมดูล 5 ได้</p></a>
+    <a class="card" href="#accept"><div class="num">โมดูล 5</div><h3>ตรวจรับเครื่อง</h3><p>6 ขั้นของการตรวจรับ function check ความปลอดภัยทางไฟฟ้า แล้วฝึกตัดสิน รับ / รับแบบมีเงื่อนไข / ไม่รับ จาก 4 กรณี</p></a>
+    <a class="card" href="#pmplan"><div class="num">โมดูล 6</div><h3>PM ตามรอบ</h3><p>รอบการดูแลก่อนใช้ หลังใช้ ทุก 6 สัปดาห์ ทุก 6 เดือน และ battery test วางแผน PM แล้วทำ PM จำลองเทียบกับ baseline</p></a>
+    <a class="card" href="#repair"><div class="num">โมดูล 7</div><h3>วิเคราะห์อาการและโจทย์ซ่อม</h3><p>คู่มือไล่หาสาเหตุตามอาการ แล้วฝึกซ่อม 10 เคส มีทั้งโหมดเรียนรู้แบบภาพเคลื่อนไหวและโหมดสอบ</p></a>
+    <a class="card" href="#test"><div class="num">โมดูล 8</div><h3>ทดสอบหลังซ่อมและลำดับงาน</h3><p>แรงดันสูงสุด เวลาสร้างแรงดัน การรั่ว ความแม่นของเกจ อัตราไหล ระบบกันล้น แบตเตอรี่ และ IEC 62353 แล้วเรียงขั้นตอนงาน 3 งาน</p></a>
+    <a class="card" href="#quiz"><div class="num">หลังผ่านครบ 8 โมดูล</div><h3>สอบรวม</h3><p>สุ่ม 20 ข้อจากคลังข้อสอบ ส่งแล้วเห็นคะแนนแยกหมวดพร้อมเฉลย</p></a>
+  </div>
+  <a class="ov-3d" href="3d/">ดูเครื่องแบบ 3 มิติ<small>หมุน เปิดฝา แยกชิ้นส่วน ดูทางลมและลูกลอย และฝึกถอดเปลี่ยนชิ้นส่วน 6 งาน</small><span aria-hidden="true">→</span></a>
+  <div class="note"><b>ข้อควรทราบ:</b> สื่อนี้ใช้เพื่อการเรียนการสอนเท่านั้น ตัวเลขเกณฑ์และราคาอะไหล่เป็นค่าตัวอย่าง การซ่อมเครื่องจริงต้องทำตามคู่มือของผู้ผลิตรุ่นนั้น โดยช่างที่ผ่านการอบรม และต้องทดสอบทุกครั้งก่อนนำเครื่องกลับไปใช้กับผู้ป่วย</div>
+</section>
+
+<!-- 1 OVERVIEW -->
+<section class="view" id="v-overview">
+  <h1>โมดูล 1 · ภาพรวมการทำงานของเครื่องดูด</h1>
+  <p class="muted">เริ่มจากภาพรวมทั้งเครื่องก่อน กด “เดินเครื่อง” เพื่อดูเสมหะและอากาศไหล แล้วเปิดหัวข้อในแผง “เครื่องทำงานอย่างไร” ทีละหัวข้อ กดกล่องหรือแถวในตารางเพื่อดูตำแหน่งบนภาพ</p>
+  <div class="tools"><button id="ov-run">▶ เดินเครื่อง</button><button id="ov-full">เติมขวดจนเต็ม</button></div>
+  <div class="layout">
+    <figure id="fig-ov"></figure>
+    <aside class="panel ov-panel" id="ov-panel"></aside>
+  </div>
+  <div class="mq" data-mq="overview"></div>
+</section>
+
+<!-- 2 PARTS -->
+<section class="view" id="v-parts">
+  <h1>โมดูล 2 · ส่วนประกอบและเส้นทางลม</h1>
+  <p class="muted">แตะชิ้นส่วนบนภาพตัด หรือเลือกจากรายการ เพื่อดูหน้าที่ หลักการทำงาน อาการเสียที่พบบ่อย และวิธีตรวจเบื้องต้น</p>
+  <div class="tools"><button id="pt-run">▶ เดินเครื่อง</button></div>
+  <div class="layout">
+    <figure id="fig-cut"></figure>
+    <aside class="panel" id="panel">
+      <h2>เลือกชิ้นส่วน</h2>
+      <p class="muted">แตะชิ้นส่วนใดก็ได้บนภาพ หรือเลือกจากรายการด้านล่าง</p>
+      <div class="chips" id="chips"></div>
+    </aside>
+  </div>
+  <div class="mq" data-mq="parts"></div>
+</section>
+
+<section class="view" id="v-tech"><div id="tech"></div><div class="mq" data-mq="tech"></div></section>
+
+<!-- 4 SAFETY -->
+<section class="view" id="v-safety"><div id="safety"></div><div class="mq" data-mq="safety"></div></section>
+
+<section class="view" id="v-accept"><div id="accept"></div><div class="mq" data-mq="accept"></div></section>
+<section class="view" id="v-pmplan"><div id="pmplan"></div><div class="mq" data-mq="pmplan"></div></section>
+
+<!-- 7 TROUBLESHOOTING + REPAIR -->
+<section class="view" id="v-repair">
+  <div class="seg subtabs" id="rp-tabs"><button data-t="trouble" class="on">คู่มือวิเคราะห์อาการ</button><button data-t="sim">โจทย์ซ่อม 10 เคส</button></div>
+  <div id="trouble-box">
+    <h1>โมดูล 7 · วิเคราะห์อาการ</h1>
+    <p class="muted">เครื่องดูดแบบนี้ไม่มีรหัส error บนจอ ช่างต้องไล่จาก <b>อาการ</b> <b>ค่าบนเกจ</b> และ <b>ไฟสถานะ 3 ดวง</b> แตะรายการเพื่อดูสาเหตุและลำดับการตรวจ แล้วไปฝึกที่แท็บ “โจทย์ซ่อม 10 เคส”</p>
+    <input class="search" id="q" type="search" placeholder="ค้นหา เช่น ไม่ดูด แรงดูดอ่อน ไฟแดง ฟิวส์">
+    <div class="tools" id="pf">
+      <button data-p="all" class="on">ทั้งหมด</button>
+      <button data-p="h">ต้องงดใช้ทันที</button>
+      <button data-p="m">แก้ไขเร็ว</button>
+      <button data-p="l">แจ้งเตือน</button>
+    </div>
+    <div id="leds"></div>
+    <div id="alist"></div>
+    <p class="muted" id="aempty" style="display:none;margin-top:14px">ไม่พบอาการที่ตรงกับคำค้น</p>
+  </div>
+  <div id="sim" hidden></div>
+  <div class="mq" data-mq="repair"></div>
+</section>
+
+<!-- 8 TESTS + ORDER -->
+<section class="view" id="v-test">
+  <div class="seg subtabs" id="ts-tabs"><button data-t="pm" class="on">การทดสอบหลังซ่อม</button><button data-t="order">ลำดับขั้นตอนงาน</button></div>
+  <div id="pm"></div>
+  <div id="order" hidden></div>
+  <div class="mq" data-mq="test"></div>
+</section>
+
+<section class="view" id="v-quiz"><div id="quiz"></div></section>
+<section class="view" id="v-scores"><div id="scores"></div></section>
+</main>
+
+<footer>สื่อการเรียนรู้ของศูนย์การเรียนรู้เทคโนโลยีทางการแพทย์ · เนื้อหาและภาพทั้งหมดจัดทำขึ้นใหม่เพื่อการศึกษา เครื่องในแอปเป็นเครื่องจำลองทั่วไป ไม่ใช่เครื่องของผู้ผลิตรายใด และไม่ได้คัดลอกภาพหรือตารางจากคู่มือ</footer>
+
+<script src="data/config.js"></script>
+<script src="js/dia.js"></script>
+<script src="data/parts.js"></script>
+<script src="data/trouble.js"></script>
+<script src="data/safety.js"></script>
+<script src="data/cases.js"></script>
+<script src="data/learn.js"></script>
+<script src="js/app.js"></script>
+<script src="data/overview.js"></script>
+<script src="js/overview.js"></script>
+<script src="js/learn.js"></script>
+<script src="data/pm.js"></script>
+<script src="data/order.js"></script>
+<script src="data/quiz.js"></script>
+<script src="js/cert.js"></script>
+<script src="js/score.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/sim.js"></script>
+<script src="js/pm.js"></script>
+<script src="js/order.js"></script>
+<script src="js/quiz.js"></script>
+<script src="data/tech.js"></script>
+<script src="js/tech.js"></script>
+<script src="data/svc.js"></script>
+<script src="js/svc.js"></script>
+<script src="data/mquiz.js"></script>
+<script src="js/mgate.js"></script>
+</body>
+</html>
