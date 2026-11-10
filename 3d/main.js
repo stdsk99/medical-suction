@@ -95,7 +95,7 @@ tag(gaugeG, "gauge"); labelAt.gauge = [gaugeG, [0, 6.5, 1]];
 const knobG = grp(dev, 4, 14, 11.1); partRoot.regulator = knobG;
 cyl(2.6, 2.8, 2, M.knob, 0, 0, 0.6, knobG).rotation.x = Math.PI / 2;
 box(0.5, 2, 0.4, M.face, 0, 1, 1.7, knobG);
-tag(knobG, "regulator"); labelAt.regulator = [knobG, [0, 4.5, 1]];
+tag(knobG, "regulator"); labelAt.regulator = [knobG, [2, -5, 1.5]];
 const ledG = grp(dev, 12, 14, 11.1);
 const LED = [cyl(0.7, 0.7, 0.6, M.led, 0, 3, 0.2, ledG), cyl(0.7, 0.7, 0.6, M.ledY, 0, 0.5, 0.2, ledG), cyl(0.7, 0.7, 0.6, M.ledR, 0, -2, 0.2, ledG)];
 LED.forEach(l => l.rotation.x = Math.PI / 2);
@@ -139,9 +139,10 @@ tube([[7, 8, -2], [8, 8, -4], [8.2, 8, -6]], 0.5, M.tube, pipes);
 tag(pipes, "pump");
 
 /* --- อะแดปเตอร์และสาย DC (ด้านหลัง) --- */
-const pwrG = grp(scene, -4, 2, -24); partRoot.power = pwrG;
+const pwrG = grp(scene, 27, 1.7, -8); partRoot.power = pwrG;   // อะแดปเตอร์วางพื้นด้านขวาหลังเครื่อง
 box(10, 3.4, 6, M.adp, 0, 0, 0, pwrG);
-tube([[0, 0, 3], [0, 0, 8], [-6, 2, 14], [-10, 4, 13], [-12, 4, 11]], 0.4, M.cable, pwrG);
+tube([[-5, 0, -1], [-9, 0.2, -2], [-13, 1.5, -3], [-15.5, 2.3, -3.3], [-17, 2.3, -3.3]], 0.4, M.cable, pwrG);
+box(1.6, 1.6, 0.8, M.black, -17, 2.3, -3.3, pwrG);   // แจ็กไฟ DC ที่ผนังหลังเครื่อง
 tag(pwrG, "power"); labelAt.power = [pwrG, [0, 3.5, 0]];
 
 /* ========== ชุดขวด (ด้านซ้ายของเครื่อง) ========== */
@@ -152,7 +153,7 @@ const canBody = cyl(6, 6, 18, M.can, 0, 10, 0, canG); canBody.renderOrder = 2;
 cyl(6.05, 6.05, 0.3, M.lid, 0, 1, 0, canG);
 const fluid = cyl(5.6, 5.6, 1, M.fluid, 0, 1.6, 0, canG);
 const fullRing = new THREE.Mesh(new THREE.TorusGeometry(6.1, 0.15, 6, 40), M.needle); fullRing.rotation.x = Math.PI / 2; fullRing.position.y = 16.5; canG.add(fullRing);
-tag(canG, "canister"); labelAt.canister = [canG, [-7, 6, 0]];
+tag(canG, "canister"); labelAt.canister = [canG, [-9, -3, 2]];
 /* ฝาขวด + กรงลูกลอย (ขยับไปกับขวด และยกขึ้นได้) */
 const lidG = reg(grp(canG, 0, 19.6, 0), [0, 10, 0]);
 cyl(6.6, 6.6, 2, M.lid, 0, 0, 0, lidG);
@@ -162,7 +163,7 @@ const cage = cyl(1.8, 1.8, 4, new THREE.MeshStandardMaterial({ color: 0x8a96a8, 
 tag(lidG, "canister");
 const floatG = reg(grp(lidG, 3, -3.4, 0), [0, -6, 4]); partRoot.float = floatG;
 const ball = new THREE.Mesh(new THREE.SphereGeometry(1.3, 20, 14), M.ball); floatG.add(ball);
-tag(floatG, "float"); labelAt.float = [floatG, [3.5, 0, 0]];
+tag(floatG, "float"); labelAt.float = [floatG, [2, -2, 8]];
 /* สายผู้ป่วย (ต่อช่อง PATIENT) */
 const tubingG = grp(lidG); partRoot.tubing = tubingG;
 tube([[-3, 3.4, 0], [-3, 8, 0], [-8, 11, 3], [-16, 6, 8], [-20, 1, 12]], 0.55, M.tube, tubingG);
