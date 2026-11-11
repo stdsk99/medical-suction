@@ -26,10 +26,11 @@ runToggle(document.getElementById("pt-run"), svgCut, ()=>({hi:selected?[selected
 /* ---------- โมดูล 2: แผงชิ้นส่วน ---------- */
 const panel=document.getElementById("panel");
 const chips=document.getElementById("chips");
-Object.entries(P).forEach(([id,o])=>{const b=document.createElement("button");b.textContent=o.th;b.onclick=()=>select(id,true);chips.append(b);});
+Object.entries(P).forEach(([id,o])=>{const b=document.createElement("button");b.textContent=o.th;b.dataset.seen="parts|"+id;b.onclick=()=>select(id,true);chips.append(b);});
 const chipHTML=chips.outerHTML;
 let selected=null;
 function select(id,scroll){
+  if(window.Seen) Seen.mark("parts", id, document.getElementById("v-parts"));
   selected=id;
   svgCut.querySelectorAll(".part").forEach(p=>p.classList.toggle("sel",p.dataset.id===id));
   const o=P[id]; if(!o) return;
@@ -58,7 +59,7 @@ function renderAlarms(){
   const q=document.getElementById("q").value.trim().toLowerCase();
   let n=0;
   alist.innerHTML=A.filter(a=>(pf==="all"||a.p===pf)&&(!q||(a.n+a.th+a.u.join()+a.t.join()+(a.r?P[a.r].th:"")).toLowerCase().includes(q))).map(a=>{n++;
-    return `<details class="alarm" id="al-${a.id}"${openAlarm===a.id?" open":""}><summary><span class="pri ${a.p}">${priTh[a.p]}</span><span class="t">${esc(a.n)}<small>${esc(a.th)}</small></span></summary>
+    return `<details class="alarm" id="al-${a.id}" data-seen="repair|${a.id}"${openAlarm===a.id?" open":""}><summary><span class="pri ${a.p}">${priTh[a.p]}</span><span class="t">${esc(a.n)}<small>${esc(a.th)}</small></span></summary>
     <div class="body">
       ${a.u.length?`<h4>สาเหตุจากการใช้งานหรือการประกอบ</h4><ul>${li(a.u)}</ul>`:""}
       ${a.t.length?`<h4>สาเหตุทางเทคนิค</h4><ul>${li(a.t)}</ul>`:""}
@@ -87,7 +88,7 @@ document.querySelectorAll("#ts-tabs button").forEach(b=>b.onclick=()=>{testTab(b
 (function(){
   const D=window.SAFETY, root=document.getElementById("safety"); if(!D||!root) return;
   root.innerHTML=`<h1>โมดูล 4 · ด่านความปลอดภัย</h1><p class="muted">${D.intro}</p>
-    <div class="sfx">${D.items.map((x,i)=>`<details class="ov-sec"${i===0?" open":""}><summary>${esc(x.t)}</summary><div class="ov-body">${x.b.map(p=>Array.isArray(p)?`<ul>${p.map(s=>`<li>${s}</li>`).join("")}</ul>`:`<p>${p}</p>`).join("")}</div></details>`).join("")}</div>
+    <div class="sfx">${D.items.map((x,i)=>`<details class="ov-sec" data-seen="safety|s${i}"${i===0?" open":""}><summary>${esc(x.t)}</summary><div class="ov-body">${x.b.map(p=>Array.isArray(p)?`<ul>${p.map(s=>`<li>${s}</li>`).join("")}</ul>`:`<p>${p}</p>`).join("")}</div></details>`).join("")}</div>
     <div class="note"><b>ด่านความปลอดภัย:</b> สอบท้ายโมดูลนี้ต้องตอบถูก <b>ครบ 5 ข้อ</b> จึงเปิดโมดูล 5 ได้ สอบซ้ำได้ไม่จำกัด</div>`;
 })();
 
